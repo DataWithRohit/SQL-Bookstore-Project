@@ -1,196 +1,87 @@
-README - Books Database
+# Project Name
+
+## Overview
+
+This project is built using PostgreSQL and analyzes data from three CSV files: `orders_1.csv`, `customers_1.csv`, and `books.csv`. It provides insights into customer purchases, book details, and order trends by utilizing SQL queries for data extraction and analysis.
+
+## Dataset Description
+
+The project includes the following datasets:
+
+- **[`orders_1.csv`](./orders_1.csv)**: Contains order-related information such as order ID, customer ID, book ID, quantity, order date, and price.
+- **[`customers_1.csv`](./customers_1.csv)**: Stores customer details, including customer ID, name, email, and location.
+- **[`books.csv`](./books.csv)**: Lists book details like book ID, title, author, genre, and price.
+
+## Features
+
+- Data import into PostgreSQL tables
+- Querying and filtering data using SQL
+- Generating insights into customer behavior and purchasing trends
+- Using SQL joins and aggregations for deeper analysis
+
+## Installation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/your-repo-name.git
+   ```
+2. Install PostgreSQL and set up a database.
+3. Load the CSV files into PostgreSQL tables using the `COPY` command or `pgAdmin`.
+
+## Usage
+
+1. Create and connect to the PostgreSQL database:
+   ```sql
+   CREATE DATABASE book_store;
+   ```
+2. Create tables and import data:
+   ```sql
+   CREATE TABLE orders (
+       order_id SERIAL PRIMARY KEY,
+       customer_id INT,
+       book_id INT,
+       quantity INT,
+       order_date DATE,
+       price DECIMAL(10,2)
+   );
+   
+   CREATE TABLE customers (
+       customer_id SERIAL PRIMARY KEY,
+       name VARCHAR(255),
+       email VARCHAR(255),
+       location VARCHAR(255)
+   );
+   
+   CREATE TABLE books (
+       book_id SERIAL PRIMARY KEY,
+       title VARCHAR(255),
+       author VARCHAR(255),
+       genre VARCHAR(100),
+       price DECIMAL(10,2)
+   );
+   ```
+3. Load the data into the tables:
+   ```sql
+   COPY orders FROM '/path/to/orders_1.csv' DELIMITER ',' CSV HEADER;
+   COPY customers FROM '/path/to/customers_1.csv' DELIMITER ',' CSV HEADER;
+   COPY books FROM '/path/to/books.csv' DELIMITER ',' CSV HEADER;
+   ```
+4. Run SQL queries to analyze data, for example:
+   ```sql
+   SELECT customers.name, books.title, orders.quantity, orders.price 
+   FROM orders
+   JOIN customers ON orders.customer_id = customers.customer_id
+   JOIN books ON orders.book_id = books.book_id;
+   ```
+
+## Dependencies
+
+- PostgreSQL
+- pgAdmin (optional for managing the database)
+
+## Contributing
+
+Feel free to fork this repository, make enhancements, and submit a pull request.
 
-Table of Contents
 
-Overview
-
-Database Schema
-
-Books Table
-
-Customers Table
-
-Orders Table
-
-Relationships
-
-Usage Instructions
-
-SQL Solution File
-
-Overview
-
-This project consists of three CSV files representing a database for a bookstore's operations. The database includes information about books, customers, and orders. The data is structured into three tables: Books, Customers, and Orders.
-
-Database Schema
-
-1. Books Table (Books.csv)
-
-This table stores information about books available in the bookstore.
-
-Column Name
-
-Data Type
-
-Description
-
-Book_ID
-
-INT (PK)
-
-Unique identifier for each book.
-
-Title
-
-VARCHAR
-
-The title of the book.
-
-Author
-
-VARCHAR
-
-The author of the book.
-
-Genre
-
-VARCHAR
-
-The genre of the book.
-
-Published_Year
-
-YEAR
-
-The year the book was published.
-
-Price
-
-DECIMAL
-
-The price of the book.
-
-Stock
-
-INT
-
-Number of copies available.
-
-2. Customers Table (Customers_1.csv)
-
-This table contains customer details.
-
-Column Name
-
-Data Type
-
-Description
-
-Customer_ID
-
-INT (PK)
-
-Unique identifier for each customer.
-
-Name
-
-VARCHAR
-
-Full name of the customer.
-
-Email
-
-VARCHAR
-
-Email address of the customer.
-
-Phone
-
-VARCHAR
-
-Contact number of the customer.
-
-City
-
-VARCHAR
-
-City of residence.
-
-Country
-
-VARCHAR
-
-Country of residence.
-
-3. Orders Table (Orders_1.csv)
-
-This table tracks customer orders and references books and customers.
-
-Column Name
-
-Data Type
-
-Description
-
-Order_ID
-
-INT (PK)
-
-Unique identifier for each order.
-
-Customer_ID
-
-INT (FK)
-
-References Customers.Customer_ID.
-
-Book_ID
-
-INT (FK)
-
-References Books.Book_ID.
-
-Order_Date
-
-DATE
-
-Date when the order was placed.
-
-Quantity
-
-INT
-
-Number of books ordered.
-
-Total_Amount
-
-DECIMAL
-
-Total amount for the order (Quantity * Price).
-
-Relationships
-
-The database maintains the following relationships:
-
-The Orders table references the Books table through the Book_ID column.
-
-The Orders table references the Customers table through the Customer_ID column.
-
-Usage Instructions
-
-Create the Database and Tables: Execute the SQL script to create the tables.
-
-Import Data: Load the provided CSV files into their respective tables.
-
-Run Queries: Perform various queries to analyze book sales, customer orders, and stock levels.
-
-SQL Solution File
-
-A separate SQL script (solution.sql) is provided, which includes:
-
-Table creation statements
-
-Insert statements for loading sample data
-
-Queries to analyze and retrieve data
 
