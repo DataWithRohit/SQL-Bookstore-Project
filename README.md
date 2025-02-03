@@ -36,7 +36,7 @@ The project includes the following datasets:
    ```
 2. Create tables and import data:
    ```sql
-   CREATE TABLE orders (
+   CREATE TABLE orders_1 (
        order_id SERIAL PRIMARY KEY,
        customer_id INT,
        book_id INT,
@@ -45,7 +45,7 @@ The project includes the following datasets:
        price DECIMAL(10,2)
    );
    
-   CREATE TABLE customers (
+   CREATE TABLE customers_1 (
        customer_id SERIAL PRIMARY KEY,
        name VARCHAR(255),
        email VARCHAR(255),
