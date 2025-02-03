@@ -83,5 +83,8 @@ The project includes the following datasets:
 
 Feel free to fork this repository, make enhancements, and submit a pull request.
 
+## For more data insights connect with me 
+linkeldn<a>https://www.linkedin.com/in/rohit-panwar22/</a>
+
 
 
