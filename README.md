@@ -8,9 +8,9 @@ This project is built using PostgreSQL and analyzes data from three CSV files: `
 
 The project includes the following datasets:
 
-- **[`orders_1.csv`](./orders_1.csv)**: Contains order-related information such as order ID, customer ID, book ID, quantity, order date, and price.
-- **[`customers_1.csv`](./customers_1.csv)**: Stores customer details, including customer ID, name, email, and location.
-- **[`books.csv`](./books.csv)**: Lists book details like book ID, title, author, genre, and price.
+- **[`orders_1.csv`](./Orders_1.csv)**: Contains order-related information such as order ID, customer ID, book ID, quantity, order date, and price.
+- **[`customers_1.csv`](./Customers_1.csv)**: Stores customer details, including customer ID, name, email, and location.
+- **[`books.csv`](./Books.csv)**: Lists book details like book ID, title, author, genre, and price.
 
 ## Features
 
